@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金融知识本体 · Financial Ontology</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>＄</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+  :root{
+    --bg:#0f1b2d; --panel:#16263f; --panel2:#1c2f4d;
+    --ink:#e8eef7; --sub:#9db0cc; --gold:#e0a94e; --blue:#4f8fe8; --green:#43b98a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:linear-gradient(180deg,#0d1829,#0f1b2d 40%);color:var(--ink);
+    font-family:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    padding:28px 20px 60px;}
+  .wrap{max-width:1240px;margin:0 auto}
+  header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:22px}
+  h1{font-size:26px;font-weight:800;letter-spacing:.5px}
+  h1 span{color:var(--gold)}
+  .desc{color:var(--sub);font-size:13px;margin-top:6px;max-width:560px;line-height:1.6}
+  .stats{display:flex;gap:12px;flex-wrap:wrap}
+  .stat{background:var(--panel);border:1px solid #24395c;border-radius:10px;padding:10px 16px;min-width:96px;text-align:center}
+  .stat b{display:block;font-size:22px;color:var(--gold)}
+  .stat i{font-style:normal;font-size:11px;color:var(--sub)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid #24395c;border-radius:14px;padding:18px}
+  .card h2{font-size:15px;font-weight:700;margin-bottom:4px}
+  .card .cap{font-size:12px;color:var(--sub);margin-bottom:10px}
+  #tree{width:100%;height:430px}
+  #graph{width:100%;height:430px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #24395c}
+  th{color:var(--gold);font-weight:600;font-size:12px}
+  td code{color:#8fd0ff;font-size:12px}
+  .tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px}
+  .t-obj{background:#1d3a5f;color:#8fd0ff}
+  .t-data{background:#2f4a3a;color:#8fe0b8}
+  .full{margin-top:18px}
+  .foot{margin-top:24px;color:var(--sub);font-size:12px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>金融知识本体 <span>· Financial Ontology</span></h1>
+      <div class="desc">基于 rdflib 构建的 OWL/RDFS 本体：定义类层级、对象属性、数据属性与示例个体，共 149 条 RDF 三元组，可在 Protégé 中打开做推理。</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>22</b><i>OWL 类</i></div>
+      <div class="stat"><b>14</b><i>属性</i></div>
+      <div class="stat"><b>14</b><i>个体</i></div>
+      <div class="stat"><b>149</b><i>三元组</i></div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <h2>类层级（is-a 继承树）</h2>
+      <div class="cap">实线箭头表示 rdfs:subClassOf，例：Stock ⊂ Security ⊂ FinancialInstrument</div>
+      <div id="tree"></div>
+    </div>
+    <div class="card">
+      <h2>实例关系网络</h2>
+      <div class="cap">对象属性连接的个体：发行、上市、所属行业、所属板块</div>
+      <div id="graph"></div>
+    </div>
+  </div>
+
+  <div class="card full">
+    <h2>本体属性清单</h2>
+    <div class="cap">对象属性（domain → range）与数据属性</div>
+    <table>
+      <colgroup><col style="width:24%"><col style="width:14%"><col style="width:30%"><col style="width:32%"></colgroup>
+      <thead><tr><th>属性</th><th>类型</th><th>定义域 → 值域</th><th>含义</th></tr></thead>
+      <tbody>
+        <tr><td><code>issues</code></td><td><span class="tag t-obj">对象</span></td><td>金融机构 → 金融工具</td><td>发行 / 被发行（互逆 issuedBy）</td></tr>
+        <tr><td><code>listedOn</code></td><td><span class="tag t-obj">对象</span></td><td>证券 → 交易所</td><td>证券上市地</td></tr>
+        <tr><td><code>belongsToIndustry</code></td><td><span class="tag t-obj">对象</span></td><td>公司 → 行业</td><td>公司所属行业</td></tr>
+        <tr><td><code>belongsToRegion</code></td><td><span class="tag t-obj">对象</span></td><td>证券 → 市场板块</td><td>A 股 / 港股等</td></tr>
+        <tr><td><code>hasUnderlying</code></td><td><span class="tag t-obj">对象</span></td><td>衍生品 → 金融工具</td><td>衍生品标的资产</td></tr>
+        <tr><td><code>investsIn</code></td><td><span class="tag t-obj">对象</span></td><td>投资者 → 金融工具</td><td>投资标的</td></tr>
+        <tr><td><code>hasTicker</code></td><td><span class="tag t-data">数据</span></td><td>证券 → xsd:string</td><td>交易代码（如 600519）</td></tr>
+        <tr><td><code>hasISIN</code></td><td><span class="tag t-data">数据</span></td><td>证券 → xsd:string</td><td>ISIN 国际编码</td></tr>
+        <tr><td><code>hasMarketCap</code></td><td><span class="tag t-data">数据</span></td><td>公司 → xsd:decimal</td><td>市值（亿元）</td></tr>
+        <tr><td><code>hasLatestPrice</code></td><td><span class="tag t-data">数据</span></td><td>证券 → xsd:decimal</td><td>最新价</td></tr>
+        <tr><td><code>hasYield</code></td><td><span class="tag t-data">数据</span></td><td>债券 → xsd:decimal</td><td>到期收益率</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="foot">
+    建模要点：① 用 OWL Class 表达概念、个体表达具体对象；② 子类用 rdfs:subClassOf，互斥类用 owl:disjointWith；
+    ③ 对象属性与数据属性分离，domain/range 便于推理校验；④ rdflib 默认不做 RDFS 推理，沿父类查询需走 subClassOf* 路径或接入 owlrl。
+  </div>
+</div>
+
+<script>
+const tree = echarts.init(document.getElementById('tree'));
+tree.setOption({
+  tooltip:{trigger:'item',triggerOn:'mousemove'},
+  series:[{
+    type:'tree', data:[{name:'Thing', children:[
+      {name:'金融工具', children:[{name:'证券', children:[
+        {name:'股票'},{name:'债券'},
+        {name:'基金', children:[{name:'ETF'},{name:'公募基金'}]},
+        {name:'衍生品', children:[{name:'期权'},{name:'期货'}]}
+      ]}]},
+      {name:'金融机构', children:[{name:'银行'},{name:'保险'},{name:'券商'},{name:'基金管理人'}]},
+      {name:'市场', children:[{name:'证券交易所'}]},
+      {name:'公司'},{name:'行业'},{name:'地区板块'},
+      {name:'投资者', children:[{name:'个人投资者'},{name:'机构投资者'}]}
+    ]}],
+    top:'4%',left:'14%',bottom:'4%',right:'20%',
+    symbolSize:9, orient:'LR',
+    label:{color:'#e8eef7',fontSize:12},
+    leaves:{label:{color:'#9db0cc'}},
+    lineStyle:{color:'#3a5a8c',width:1.2},
+    itemStyle:{color:'#e0a94e'},
+    expandAndCollapse:false, initialTreeDepth:3
+  }]
+});
+
+const graph = echarts.init(document.getElementById('graph'));
+const nodes=[
+  {name:'贵州茅台(公司)',category:0,symbolSize:46},
+  {name:'中国工商银行(银行)',category:1,symbolSize:46},
+  {name:'白酒行业',category:2,symbolSize:34},
+  {name:'银行业',category:2,symbolSize:34},
+  {name:'茅台股票 600519',category:3,symbolSize:42},
+  {name:'工行股票 601398',category:3,symbolSize:42},
+  {name:'沪深300ETF 510300',category:3,symbolSize:38},
+  {name:'2025国债',category:3,symbolSize:36},
+  {name:'上交所 SSE',category:4,symbolSize:40},
+  {name:'深交所 SZSE',category:4,symbolSize:36},
+  {name:'A股板块',category:5,symbolSize:34}
+];
+const links=[
+  ['贵州茅台(公司)','白酒行业','所属行业'],
+  ['中国工商银行(银行)','银行业','所属行业'],
+  ['茅台股票 600519','贵州茅台(公司)','发行'],
+  ['工行股票 601398','中国工商银行(银行)','发行'],
+  ['茅台股票 600519','上交所 SSE','上市于'],
+  ['工行股票 601398','上交所 SSE','上市于'],
+  ['沪深300ETF 510300','上交所 SSE','上市于'],
+  ['沪深300ETF 510300','深交所 SZSE','上市于'],
+  ['茅台股票 600519','A股板块','所属板块'],
+  ['工行股票 601398','A股板块','所属板块']
+].map(l=>({source:l[0],target:l[1],label:{show:false,formatter:l[2],color:'#9db0cc',fontSize:10}}));
+graph.setOption({
+  tooltip:{},
+  legend:{data:['公司/机构','行业','证券','交易所','板块'],textStyle:{color:'#9db0cc'},bottom:0},
+  series:[{
+    type:'graph', layout:'force', roam:true,
+    categories:[{name:'公司/机构'},{name:'行业'},{name:'证券'},{name:'交易所'},{name:'板块'}],
+    data:nodes, links:links,
+    force:{repulsion:220,edgeLength:90},
+    label:{show:true,position:'right',color:'#e8eef7',fontSize:11},
+    lineStyle:{color:'#4f8fe8',width:1.2,curveness:0.1},
+    emphasis:{focus:'adjacency',lineStyle:{width:2.5}},
+    itemStyle:{borderColor:'#0f1b2d',borderWidth:1}
+  }]
+});
+window.addEventListener('resize',()=>{tree.resize();graph.resize();});
+</script>
+</body>
+</html>

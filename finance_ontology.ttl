@@ -1,0 +1,204 @@
+@prefix fin: <http://example.org/finance#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fin:Broker a owl:Class ;
+    rdfs:label "券商"@zh ;
+    rdfs:subClassOf fin:FinancialInstitution .
+
+fin:CSI300_ETF a fin:ETF ;
+    rdfs:label "沪深300ETF"@zh ;
+    fin:hasTicker "510300" .
+
+fin:FinancialOntology a owl:Ontology ;
+    rdfs:label "金融知识本体"@zh ;
+    rdfs:comment "覆盖金融机构、证券、市场、行业、投资者与宏观指标的本体。"@zh .
+
+fin:FundManager a owl:Class ;
+    rdfs:label "基金管理人"@zh ;
+    rdfs:subClassOf fin:FinancialInstitution .
+
+fin:Future a owl:Class ;
+    rdfs:label "期货"@zh ;
+    rdfs:subClassOf fin:Derivative .
+
+fin:GB_2025 a fin:Bond ;
+    rdfs:label "2025年记账式国债"@zh ;
+    fin:hasYield 0.0245 .
+
+fin:HShare a fin:Region ;
+    rdfs:label "港股市场"@zh .
+
+fin:ICBC_Stock a fin:Stock ;
+    rdfs:label "工商银行(601398)"@zh ;
+    fin:hasTicker "601398" ;
+    fin:issues fin:ICBC ;
+    fin:listedOn fin:SSE .
+
+fin:IndividualInvestor a owl:Class ;
+    rdfs:label "个人投资者"@zh ;
+    rdfs:subClassOf fin:Investor .
+
+fin:InstitutionalInvestor a owl:Class ;
+    rdfs:label "机构投资者"@zh ;
+    rdfs:subClassOf fin:Investor .
+
+fin:Moutai a fin:Company ;
+    rdfs:label "贵州茅台"@zh ;
+    fin:belongsToIndustry fin:Baijiu ;
+    fin:hasMarketCap 21000.0 .
+
+fin:Moutai_Stock a fin:Stock ;
+    rdfs:label "贵州茅台(600519)"@zh ;
+    fin:belongsToRegion fin:AShare ;
+    fin:hasISIN "CNE0000004R9" ;
+    fin:hasLatestPrice 1680.0 ;
+    fin:hasTicker "600519" ;
+    fin:listedOn fin:SSE .
+
+fin:MutualFund a owl:Class ;
+    rdfs:label "公募基金"@zh ;
+    rdfs:subClassOf fin:Fund .
+
+fin:Option a owl:Class ;
+    rdfs:label "期权"@zh ;
+    rdfs:subClassOf fin:Derivative .
+
+fin:SZSE a fin:StockExchange ;
+    rdfs:label "深圳证券交易所"@zh .
+
+fin:belongsToIndustry a owl:ObjectProperty ;
+    rdfs:domain fin:Company ;
+    rdfs:range fin:Industry .
+
+fin:belongsToRegion a owl:ObjectProperty ;
+    rdfs:domain fin:Security ;
+    rdfs:range fin:Region .
+
+fin:foundedYear a owl:DatatypeProperty ;
+    rdfs:domain fin:FinancialInstitution ;
+    rdfs:range xsd:gYear .
+
+fin:hasISIN a owl:DatatypeProperty ;
+    rdfs:domain fin:Security ;
+    rdfs:range xsd:string .
+
+fin:hasLatestPrice a owl:DatatypeProperty ;
+    rdfs:domain fin:Security ;
+    rdfs:range xsd:decimal .
+
+fin:hasMarketCap a owl:DatatypeProperty ;
+    rdfs:domain fin:Company ;
+    rdfs:range xsd:decimal .
+
+fin:hasTicker a owl:DatatypeProperty ;
+    rdfs:domain fin:Security ;
+    rdfs:range xsd:string .
+
+fin:hasUnderlying a owl:ObjectProperty ;
+    rdfs:domain fin:Derivative ;
+    rdfs:range fin:FinancialInstrument .
+
+fin:hasYield a owl:DatatypeProperty ;
+    rdfs:domain fin:Bond ;
+    rdfs:range xsd:decimal .
+
+fin:headquarteredIn a owl:ObjectProperty ;
+    rdfs:domain fin:Company ;
+    rdfs:range fin:Region .
+
+fin:investsIn a owl:ObjectProperty ;
+    rdfs:domain fin:Investor ;
+    rdfs:range fin:FinancialInstrument .
+
+fin:issues a owl:ObjectProperty ;
+    rdfs:domain fin:FinancialInstitution ;
+    rdfs:range fin:FinancialInstrument ;
+    owl:inverseOf fin:issuedBy .
+
+fin:listedOn a owl:ObjectProperty ;
+    rdfs:domain fin:Security ;
+    rdfs:range fin:StockExchange .
+
+fin:tradedOn a owl:ObjectProperty ;
+    rdfs:domain fin:Market ;
+    rdfs:range fin:FinancialInstrument .
+
+fin:AShare a fin:Region ;
+    rdfs:label "A股市场"@zh .
+
+fin:Baijiu a fin:Industry ;
+    rdfs:label "白酒行业"@zh .
+
+fin:Bank a owl:Class ;
+    rdfs:label "银行"@zh ;
+    rdfs:subClassOf fin:FinancialInstitution ;
+    owl:disjointWith fin:InsuranceCompany .
+
+fin:Banking a fin:Industry ;
+    rdfs:label "银行业"@zh .
+
+fin:ETF a owl:Class ;
+    rdfs:label "交易型开放式指数基金"@zh ;
+    rdfs:subClassOf fin:Fund .
+
+fin:ICBC a fin:Bank ;
+    rdfs:label "中国工商银行"@zh ;
+    fin:belongsToIndustry fin:Banking ;
+    fin:foundedYear "1984"^^xsd:gYear .
+
+fin:InsuranceCompany a owl:Class ;
+    rdfs:label "保险公司"@zh ;
+    rdfs:subClassOf fin:FinancialInstitution .
+
+fin:Fund a owl:Class ;
+    rdfs:label "基金"@zh ;
+    rdfs:subClassOf fin:Security .
+
+fin:Market a owl:Class ;
+    rdfs:label "金融市场"@zh .
+
+fin:SSE a fin:StockExchange ;
+    rdfs:label "上海证券交易所"@zh .
+
+fin:Stock a owl:Class ;
+    rdfs:label "股票"@zh ;
+    rdfs:subClassOf fin:Security ;
+    owl:disjointWith fin:Bond .
+
+fin:Bond a owl:Class ;
+    rdfs:label "债券"@zh ;
+    rdfs:subClassOf fin:Security .
+
+fin:Derivative a owl:Class ;
+    rdfs:label "衍生品"@zh ;
+    rdfs:subClassOf fin:Security .
+
+fin:Industry a owl:Class ;
+    rdfs:label "行业"@zh .
+
+fin:Investor a owl:Class ;
+    rdfs:label "投资者"@zh .
+
+fin:StockExchange a owl:Class ;
+    rdfs:label "证券交易所"@zh ;
+    rdfs:subClassOf fin:Market .
+
+fin:Company a owl:Class ;
+    rdfs:label "公司（发行人）"@zh .
+
+fin:Region a owl:Class ;
+    rdfs:label "地区/市场板块"@zh .
+
+fin:FinancialInstrument a owl:Class ;
+    rdfs:label "金融工具"@zh ;
+    rdfs:comment "可交易的金融资产合约"@zh .
+
+fin:FinancialInstitution a owl:Class ;
+    rdfs:label "金融机构"@zh .
+
+fin:Security a owl:Class ;
+    rdfs:label "证券"@zh ;
+    rdfs:subClassOf fin:FinancialInstrument .
+
