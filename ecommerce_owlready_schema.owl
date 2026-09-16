@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/ecommerce"
+         xmlns="http://example.org/ecommerce#">
+
+<owl:Ontology rdf:about="http://example.org/ecommerce"/>
+
+<owl:ObjectProperty rdf:about="#hasCustomer">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#Customer"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasLine">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#OrderLine"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#lineProduct">
+  <rdfs:domain rdf:resource="#OrderLine"/>
+  <rdfs:range rdf:resource="#Product"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPayment">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#Payment"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasStatus">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#OrderStatus"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#name">
+  <rdfs:domain rdf:resource="#Entity"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#orderNumber">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#quantity">
+  <rdfs:domain rdf:resource="#OrderLine"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#amount">
+  <rdfs:domain rdf:resource="#Payment"/>
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Entity">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Customer">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Product">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Order">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#OrderLine">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Payment">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#OrderStatus">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Pending">
+  <rdfs:subClassOf rdf:resource="#OrderStatus"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Paid">
+  <rdfs:subClassOf rdf:resource="#OrderStatus"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Shipped">
+  <rdfs:subClassOf rdf:resource="#OrderStatus"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ValidOrder">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Order"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCustomer"/>
+          <owl:someValuesFrom rdf:resource="#Customer"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasLine"/>
+          <owl:someValuesFrom rdf:resource="#OrderLine"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#PaidOrder">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Order"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPayment"/>
+          <owl:someValuesFrom rdf:resource="#Payment"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasStatus"/>
+          <owl:someValuesFrom rdf:resource="#Paid"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#FulfillableOrder">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#ValidOrder"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasLine"/>
+          <owl:allValuesFrom rdf:resource="#OrderLine"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#demo_customer">
+  <rdf:type rdf:resource="#Customer"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#demo_product">
+  <rdf:type rdf:resource="#Product"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#demo_line">
+  <rdf:type rdf:resource="#OrderLine"/>
+  <lineProduct rdf:resource="#demo_product"/>
+  <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#demo_payment">
+  <rdf:type rdf:resource="#Payment"/>
+  <amount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">99.0</amount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#demo_order">
+  <rdf:type rdf:resource="#Order"/>
+  <hasCustomer rdf:resource="#demo_customer"/>
+  <hasLine rdf:resource="#demo_line"/>
+  <hasPayment rdf:resource="#demo_payment"/>
+  <hasStatus rdf:resource="#demo_paid_status"/>
+  <orderNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DEMO-001</orderNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#demo_paid_status">
+  <rdf:type rdf:resource="#Paid"/>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>

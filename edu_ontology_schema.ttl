@@ -1,0 +1,472 @@
+@prefix edu: <http://example.org/edu-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+edu:Ontology a owl:Ontology ;
+    rdfs:label "教育领域本体"@zh ;
+    rdfs:comment "不依赖具体实例数据的教育领域概念模型；实例数据可在后续接入。"@zh ;
+    owl:sameAs edu:Ontology .
+
+rdf:HTML a rdfs:Datatype ;
+    owl:sameAs rdf:HTML .
+
+rdf:PlainLiteral a rdfs:Datatype ;
+    owl:sameAs rdf:PlainLiteral .
+
+rdf:XMLLiteral a rdfs:Datatype ;
+    owl:sameAs rdf:XMLLiteral .
+
+rdf:langString a rdfs:Datatype ;
+    owl:sameAs rdf:langString .
+
+rdf:type owl:sameAs rdf:type .
+
+rdfs:Literal a rdfs:Datatype ;
+    owl:sameAs rdfs:Literal .
+
+rdfs:comment a owl:AnnotationProperty ;
+    owl:sameAs rdfs:comment .
+
+rdfs:domain owl:sameAs rdfs:domain .
+
+rdfs:isDefinedBy a owl:AnnotationProperty ;
+    owl:sameAs rdfs:isDefinedBy .
+
+rdfs:label a owl:AnnotationProperty ;
+    owl:sameAs rdfs:label .
+
+rdfs:range owl:sameAs rdfs:range .
+
+rdfs:seeAlso a owl:AnnotationProperty ;
+    owl:sameAs rdfs:seeAlso .
+
+rdfs:subClassOf owl:sameAs rdfs:subClassOf .
+
+rdfs:subPropertyOf owl:sameAs rdfs:subPropertyOf .
+
+xsd:NCName a rdfs:Datatype ;
+    owl:sameAs xsd:NCName .
+
+xsd:NMTOKEN a rdfs:Datatype ;
+    owl:sameAs xsd:NMTOKEN .
+
+xsd:Name a rdfs:Datatype ;
+    owl:sameAs xsd:Name .
+
+xsd:anyURI a rdfs:Datatype ;
+    owl:sameAs xsd:anyURI .
+
+xsd:base64Binary a rdfs:Datatype ;
+    owl:sameAs xsd:base64Binary .
+
+xsd:boolean a rdfs:Datatype ;
+    owl:sameAs xsd:boolean .
+
+xsd:byte a rdfs:Datatype ;
+    owl:sameAs xsd:byte .
+
+xsd:date a rdfs:Datatype ;
+    owl:sameAs xsd:date .
+
+xsd:dateTime a rdfs:Datatype ;
+    owl:sameAs xsd:dateTime .
+
+xsd:dateTimeStamp a rdfs:Datatype ;
+    owl:sameAs xsd:dateTimeStamp .
+
+xsd:double a rdfs:Datatype ;
+    owl:sameAs xsd:double .
+
+xsd:float a rdfs:Datatype ;
+    owl:sameAs xsd:float .
+
+xsd:hexBinary a rdfs:Datatype ;
+    owl:sameAs xsd:hexBinary .
+
+xsd:int a rdfs:Datatype ;
+    owl:sameAs xsd:int .
+
+xsd:integer a rdfs:Datatype ;
+    owl:sameAs xsd:integer .
+
+xsd:language a rdfs:Datatype ;
+    owl:sameAs xsd:language .
+
+xsd:long a rdfs:Datatype ;
+    owl:sameAs xsd:long .
+
+xsd:negativeInteger a rdfs:Datatype ;
+    owl:sameAs xsd:negativeInteger .
+
+xsd:nonNegativeInteger a rdfs:Datatype ;
+    owl:sameAs xsd:nonNegativeInteger .
+
+xsd:nonPositiveInteger a rdfs:Datatype ;
+    owl:sameAs xsd:nonPositiveInteger .
+
+xsd:normalizedString a rdfs:Datatype ;
+    owl:sameAs xsd:normalizedString .
+
+xsd:positiveInteger a rdfs:Datatype ;
+    owl:sameAs xsd:positiveInteger .
+
+xsd:short a rdfs:Datatype ;
+    owl:sameAs xsd:short .
+
+xsd:time a rdfs:Datatype ;
+    owl:sameAs xsd:time .
+
+xsd:token a rdfs:Datatype ;
+    owl:sameAs xsd:token .
+
+xsd:unsignedByte a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedByte .
+
+xsd:unsignedInt a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedInt .
+
+xsd:unsignedLong a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedLong .
+
+xsd:unsignedShort a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedShort .
+
+owl:backwardCompatibleWith a owl:AnnotationProperty ;
+    owl:sameAs owl:backwardCompatibleWith .
+
+owl:deprecated a owl:AnnotationProperty ;
+    owl:sameAs owl:deprecated .
+
+owl:equivalentClass owl:sameAs owl:equivalentClass .
+
+owl:equivalentProperty owl:sameAs owl:equivalentProperty .
+
+owl:incompatibleWith a owl:AnnotationProperty ;
+    owl:sameAs owl:incompatibleWith .
+
+owl:inverseOf owl:sameAs owl:inverseOf .
+
+owl:priorVersion a owl:AnnotationProperty ;
+    owl:sameAs owl:priorVersion .
+
+owl:sameAs owl:sameAs owl:sameAs .
+
+owl:versionInfo a owl:AnnotationProperty ;
+    owl:sameAs owl:versionInfo .
+
+xsd:decimal a rdfs:Datatype ;
+    owl:sameAs xsd:decimal .
+
+owl:Ontology owl:sameAs owl:Ontology .
+
+"不依赖具体实例数据的教育领域概念模型；实例数据可在后续接入。"@zh owl:sameAs "不依赖具体实例数据的教育领域概念模型；实例数据可在后续接入。"@zh .
+
+"人员"@zh owl:sameAs "人员"@zh .
+
+"先修课程"@zh owl:sameAs "先修课程"@zh .
+
+"名称"@zh owl:sameAs "名称"@zh .
+
+"培养方案"@zh owl:sameAs "培养方案"@zh .
+
+"学习者"@zh owl:sameAs "学习者"@zh .
+
+"学习资源"@zh owl:sameAs "学习资源"@zh .
+
+"学分"@zh owl:sameAs "学分"@zh .
+
+"学校"@zh owl:sameAs "学校"@zh .
+
+"学生"@zh owl:sameAs "学生"@zh .
+
+"开设组织"@zh owl:sameAs "开设组织"@zh .
+
+"所属培养方案"@zh owl:sameAs "所属培养方案"@zh .
+
+"教师"@zh owl:sameAs "教师"@zh .
+
+"教授课程"@zh owl:sameAs "教授课程"@zh .
+
+"教育实体"@zh owl:sameAs "教育实体"@zh .
+
+"教育组织"@zh owl:sameAs "教育组织"@zh .
+
+"教育领域本体"@zh owl:sameAs "教育领域本体"@zh .
+
+"课程"@zh owl:sameAs "课程"@zh .
+
+"课程代码"@zh owl:sameAs "课程代码"@zh .
+
+"课程学生"@zh owl:sameAs "课程学生"@zh .
+
+"课程层次"@zh owl:sameAs "课程层次"@zh .
+
+"课程授课教师"@zh owl:sameAs "课程授课教师"@zh .
+
+"选修课程"@zh owl:sameAs "选修课程"@zh .
+
+edu:courseCode a owl:DatatypeProperty ;
+    rdfs:label "课程代码"@zh ;
+    rdfs:domain edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:courseCode ;
+    owl:equivalentProperty edu:courseCode ;
+    owl:sameAs edu:courseCode .
+
+edu:credits a owl:DatatypeProperty ;
+    rdfs:label "学分"@zh ;
+    rdfs:domain edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf edu:credits ;
+    owl:equivalentProperty edu:credits ;
+    owl:sameAs edu:credits .
+
+edu:enrolledIn a owl:ObjectProperty ;
+    rdfs:label "选修课程"@zh ;
+    rdfs:domain edu:Entity,
+        edu:Learner,
+        edu:Person,
+        edu:Student,
+        owl:Thing ;
+    rdfs:range edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:subPropertyOf edu:enrolledIn ;
+    owl:equivalentProperty edu:enrolledIn ;
+    owl:inverseOf edu:hasStudent ;
+    owl:sameAs edu:enrolledIn .
+
+edu:hasPrerequisite a owl:ObjectProperty ;
+    rdfs:label "先修课程"@zh ;
+    rdfs:domain edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:range edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:subPropertyOf edu:hasPrerequisite ;
+    owl:equivalentProperty edu:hasPrerequisite ;
+    owl:sameAs edu:hasPrerequisite .
+
+edu:level a owl:DatatypeProperty ;
+    rdfs:label "课程层次"@zh ;
+    rdfs:domain edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:level ;
+    owl:equivalentProperty edu:level ;
+    owl:sameAs edu:level .
+
+edu:name a owl:DatatypeProperty ;
+    rdfs:label "名称"@zh ;
+    rdfs:domain edu:Entity,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:name ;
+    owl:equivalentProperty edu:name ;
+    owl:sameAs edu:name .
+
+edu:offeredBy a owl:ObjectProperty ;
+    rdfs:label "开设组织"@zh ;
+    rdfs:domain edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:range edu:Entity,
+        edu:Organization,
+        owl:Thing ;
+    rdfs:subPropertyOf edu:offeredBy ;
+    owl:equivalentProperty edu:offeredBy ;
+    owl:sameAs edu:offeredBy .
+
+edu:partOfProgram a owl:ObjectProperty ;
+    rdfs:label "所属培养方案"@zh ;
+    rdfs:domain edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:range edu:Entity,
+        edu:LearningResource,
+        edu:Program,
+        owl:Thing ;
+    rdfs:subPropertyOf edu:partOfProgram ;
+    owl:equivalentProperty edu:partOfProgram ;
+    owl:sameAs edu:partOfProgram .
+
+edu:teaches a owl:ObjectProperty ;
+    rdfs:label "教授课程"@zh ;
+    rdfs:domain edu:Entity,
+        edu:Person,
+        edu:Teacher,
+        owl:Thing ;
+    rdfs:range edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:subPropertyOf edu:teaches ;
+    owl:equivalentProperty edu:teaches ;
+    owl:inverseOf edu:hasTeacher ;
+    owl:sameAs edu:teaches .
+
+owl:Nothing a owl:Class ;
+    rdfs:subClassOf edu:Course,
+        edu:Entity,
+        edu:Learner,
+        edu:LearningResource,
+        edu:Organization,
+        edu:Person,
+        edu:Program,
+        edu:School,
+        edu:Student,
+        edu:Teacher,
+        owl:Nothing,
+        owl:Thing ;
+    owl:equivalentClass owl:Nothing ;
+    owl:sameAs owl:Nothing .
+
+edu:School a owl:Class ;
+    rdfs:label "学校"@zh ;
+    rdfs:subClassOf edu:Entity,
+        edu:Organization,
+        edu:School,
+        owl:Thing ;
+    owl:equivalentClass edu:School ;
+    owl:sameAs edu:School .
+
+edu:hasStudent a owl:ObjectProperty ;
+    rdfs:label "课程学生"@zh ;
+    rdfs:domain edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:range edu:Entity,
+        edu:Learner,
+        edu:Person,
+        edu:Student,
+        owl:Thing ;
+    rdfs:subPropertyOf edu:hasStudent ;
+    owl:equivalentProperty edu:hasStudent ;
+    owl:sameAs edu:hasStudent .
+
+edu:hasTeacher a owl:ObjectProperty ;
+    rdfs:label "课程授课教师"@zh ;
+    rdfs:domain edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    rdfs:range edu:Entity,
+        edu:Person,
+        edu:Teacher,
+        owl:Thing ;
+    rdfs:subPropertyOf edu:hasTeacher ;
+    owl:equivalentProperty edu:hasTeacher ;
+    owl:sameAs edu:hasTeacher .
+
+xsd:string a rdfs:Datatype ;
+    owl:sameAs xsd:string .
+
+edu:Program a owl:Class ;
+    rdfs:label "培养方案"@zh ;
+    rdfs:subClassOf edu:Entity,
+        edu:LearningResource,
+        edu:Program,
+        owl:Thing ;
+    owl:equivalentClass edu:Program ;
+    owl:sameAs edu:Program .
+
+owl:DatatypeProperty owl:sameAs owl:DatatypeProperty .
+
+edu:Organization a owl:Class ;
+    rdfs:label "教育组织"@zh ;
+    rdfs:subClassOf edu:Entity,
+        edu:Organization,
+        owl:Thing ;
+    owl:equivalentClass edu:Organization ;
+    owl:sameAs edu:Organization .
+
+edu:Student a owl:Class ;
+    rdfs:label "学生"@zh ;
+    rdfs:subClassOf edu:Entity,
+        edu:Learner,
+        edu:Person,
+        edu:Student,
+        owl:Thing ;
+    owl:equivalentClass edu:Student ;
+    owl:sameAs edu:Student .
+
+edu:Teacher a owl:Class ;
+    rdfs:label "教师"@zh ;
+    rdfs:subClassOf edu:Entity,
+        edu:Person,
+        edu:Teacher,
+        owl:Thing ;
+    owl:equivalentClass edu:Teacher ;
+    owl:sameAs edu:Teacher .
+
+edu:Learner a owl:Class ;
+    rdfs:label "学习者"@zh ;
+    rdfs:subClassOf edu:Entity,
+        edu:Learner,
+        edu:Person,
+        owl:Thing ;
+    owl:equivalentClass edu:Learner ;
+    owl:sameAs edu:Learner .
+
+owl:ObjectProperty owl:sameAs owl:ObjectProperty .
+
+owl:AnnotationProperty owl:sameAs owl:AnnotationProperty .
+
+edu:Person a owl:Class ;
+    rdfs:label "人员"@zh ;
+    rdfs:subClassOf edu:Entity,
+        edu:Person,
+        owl:Thing ;
+    owl:equivalentClass edu:Person ;
+    owl:sameAs edu:Person .
+
+owl:Class owl:sameAs owl:Class .
+
+edu:Course a owl:Class ;
+    rdfs:label "课程"@zh ;
+    rdfs:subClassOf edu:Course,
+        edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    owl:equivalentClass edu:Course ;
+    owl:sameAs edu:Course .
+
+edu:LearningResource a owl:Class ;
+    rdfs:label "学习资源"@zh ;
+    rdfs:subClassOf edu:Entity,
+        edu:LearningResource,
+        owl:Thing ;
+    owl:equivalentClass edu:LearningResource ;
+    owl:sameAs edu:LearningResource .
+
+edu:Entity a owl:Class ;
+    rdfs:label "教育实体"@zh ;
+    rdfs:subClassOf edu:Entity,
+        owl:Thing ;
+    owl:equivalentClass edu:Entity ;
+    owl:sameAs edu:Entity .
+
+owl:Thing a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass owl:Thing ;
+    owl:sameAs owl:Thing .
+
+rdfs:Datatype owl:sameAs rdfs:Datatype .
+

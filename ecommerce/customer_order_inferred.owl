@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/ecommerce-sparse"
+         xmlns="http://example.org/ecommerce-sparse#">
+
+<owl:Ontology rdf:about="http://example.org/ecommerce-sparse"/>
+
+<owl:ObjectProperty rdf:about="#placesOrder">
+  <rdfs:domain rdf:resource="#Customer"/>
+  <rdfs:range rdf:resource="#Order"/>
+  <owl:inverseOf rdf:resource="#hasCustomer"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasCustomer">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#Customer"/>
+  <owl:inverseOf rdf:resource="#placesOrder"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#Customer">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Order">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CustomerWithOrders">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Customer"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:someValuesFrom rdf:resource="#Order"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#OrderWithCustomer">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Order"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCustomer"/>
+          <owl:someValuesFrom rdf:resource="#Customer"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+
+</rdf:RDF>

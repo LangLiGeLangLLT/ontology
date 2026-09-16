@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/education"
+         xmlns="http://example.org/education#">
+
+<owl:Ontology rdf:about="http://example.org/education"/>
+
+<owl:ObjectProperty rdf:about="#hasTeacher">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Teacher"/>
+  <owl:inverseOf rdf:resource="#teaches"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#teaches">
+  <rdfs:domain rdf:resource="#Teacher"/>
+  <rdfs:range rdf:resource="#Course"/>
+  <owl:inverseOf rdf:resource="#hasTeacher"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasStudent">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Student"/>
+  <owl:inverseOf rdf:resource="#enrolledIn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#enrolledIn">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="#Course"/>
+  <owl:inverseOf rdf:resource="#hasStudent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#partOfProgram">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Program"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#offeredBy">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Organization"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPrerequisite">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Course"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#name">
+  <rdfs:domain rdf:resource="#Entity"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#courseCode">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#credits">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Entity">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Person">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Learner">
+  <rdfs:subClassOf rdf:resource="#Person"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Student">
+  <rdfs:subClassOf rdf:resource="#Learner"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Teacher">
+  <rdfs:subClassOf rdf:resource="#Person"/>
+</owl:Class>
+
+<owl:Class rdf:about="#LearningResource">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Course">
+  <rdfs:subClassOf rdf:resource="#LearningResource"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Program">
+  <rdfs:subClassOf rdf:resource="#LearningResource"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Organization">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#School">
+  <rdfs:subClassOf rdf:resource="#Organization"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CourseWithTeacher">
+  <rdfs:subClassOf rdf:resource="#Course"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Course"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasTeacher"/>
+          <owl:someValuesFrom rdf:resource="#Teacher"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#LearnerCourse">
+  <rdfs:subClassOf rdf:resource="#Course"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Course"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasStudent"/>
+          <owl:someValuesFrom rdf:resource="#Student"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#ProgramCourse">
+  <rdfs:subClassOf rdf:resource="#Course"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Course"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#partOfProgram"/>
+          <owl:someValuesFrom rdf:resource="#Program"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+
+</rdf:RDF>

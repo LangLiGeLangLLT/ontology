@@ -1,0 +1,53 @@
+@prefix edu: <http://example.org/edu-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/edu-ontology> a owl:Ontology ;
+    rdfs:label "教育领域本体"@zh ;
+    rdfs:comment "简单教育本体：课程、教师、学生"@zh .
+
+edu:AICourse a edu:Course ;
+    edu:courseName "人工智能导论"@zh ;
+    edu:hasStudent edu:StudentLi ;
+    edu:hasTeacher edu:TeacherZhang .
+
+edu:courseName a owl:DatatypeProperty ;
+    rdfs:domain edu:Course ;
+    rdfs:range xsd:string .
+
+edu:hasStudent a owl:ObjectProperty ;
+    rdfs:label "拥有学生"@zh ;
+    rdfs:domain edu:Course ;
+    rdfs:range edu:Student .
+
+edu:hasTeacher a owl:ObjectProperty ;
+    rdfs:label "拥有教师"@zh ;
+    rdfs:domain edu:Course ;
+    rdfs:range edu:Teacher .
+
+edu:studentName a owl:DatatypeProperty ;
+    rdfs:domain edu:Student ;
+    rdfs:range xsd:string .
+
+edu:teacherName a owl:DatatypeProperty ;
+    rdfs:label "教师姓名"@zh ;
+    rdfs:domain edu:Teacher ;
+    rdfs:range xsd:string .
+
+edu:StudentLi a edu:Student ;
+    edu:studentName "李四"@zh .
+
+edu:TeacherZhang a edu:Teacher ;
+    edu:teacherName "张三"@zh .
+
+edu:Student a owl:Class ;
+    rdfs:label "学生"@zh .
+
+edu:Teacher a owl:Class ;
+    rdfs:label "教师"@zh ;
+    rdfs:comment "授课教师"@zh .
+
+edu:Course a owl:Class ;
+    rdfs:label "课程"@zh .
+
