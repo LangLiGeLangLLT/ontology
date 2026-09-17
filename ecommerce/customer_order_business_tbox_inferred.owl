@@ -1,0 +1,430 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/ecommerce-business-tbox"
+         xmlns="http://example.org/ecommerce-business-tbox#">
+
+<owl:Ontology rdf:about="http://example.org/ecommerce-business-tbox"/>
+
+<owl:ObjectProperty rdf:about="#placesOrder">
+  <rdfs:domain rdf:resource="#Customer"/>
+  <rdfs:range rdf:resource="#Order"/>
+  <owl:inverseOf rdf:resource="#hasCustomer"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasCustomer">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#Customer"/>
+  <owl:inverseOf rdf:resource="#placesOrder"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasLine">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#OrderLine"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#lineProduct">
+  <rdfs:domain rdf:resource="#OrderLine"/>
+  <rdfs:range rdf:resource="#Product"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPayment">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#Payment"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasStatus">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#Status"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRiskFlag">
+  <rdfs:domain rdf:resource="#Customer"/>
+  <rdfs:range rdf:resource="#RiskFlag"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#Entity">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Customer">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RetailCustomer">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BusinessCustomer">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Order">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PendingOrder">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ValidOrder">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PaidOrder">
+  <rdfs:subClassOf rdf:resource="#ValidOrder"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ShippedOrder">
+  <rdfs:subClassOf rdf:resource="#PaidOrder"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ReturnedOrder">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HighValueOrder">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BusinessOrder">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Product">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#OrderLine">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Payment">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Status">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Pending">
+  <rdfs:subClassOf rdf:resource="#Status"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Paid">
+  <rdfs:subClassOf rdf:resource="#Status"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Shipped">
+  <rdfs:subClassOf rdf:resource="#Status"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RiskFlag">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FrequentBuyer">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#LoyalCustomer">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HighValueCustomer">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PreferredCustomer">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RiskCustomer">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CustomerWithOrders">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Customer"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:someValuesFrom rdf:resource="#Order"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RepeatCustomer">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Customer"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:onClass rdf:resource="#Order"/>
+          <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#CustomerWithOrders"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FrequentBuyerDefinition">
+  <rdfs:subClassOf rdf:resource="#FrequentBuyer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Customer"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:onClass rdf:resource="#Order"/>
+          <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:minQualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#RepeatCustomer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#LoyalCustomerDefinition">
+  <rdfs:subClassOf rdf:resource="#LoyalCustomer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RepeatCustomer"/>
+        <rdf:Description rdf:about="#CustomerWithOrders"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:someValuesFrom rdf:resource="#PaidOrder"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#RepeatCustomer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HighValueOrderDefinition">
+  <rdfs:subClassOf rdf:resource="#HighValueOrder"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Order"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasLine"/>
+          <owl:onClass rdf:resource="#OrderLine"/>
+          <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPayment"/>
+          <owl:someValuesFrom rdf:resource="#Payment"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasStatus"/>
+          <owl:someValuesFrom rdf:resource="#Paid"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#PaidOrderDefinition"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HighValueCustomerDefinition">
+  <rdfs:subClassOf rdf:resource="#HighValueCustomer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Customer"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:someValuesFrom rdf:resource="#HighValueOrderDefinition"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#CustomerWithOrders"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PreferredCustomerDefinition">
+  <rdfs:subClassOf rdf:resource="#PreferredCustomer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#LoyalCustomerDefinition"/>
+        <rdf:Description rdf:about="#HighValueCustomerDefinition"/>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#HighValueCustomerDefinition"/>
+  <rdfs:subClassOf rdf:resource="#LoyalCustomerDefinition"/>
+</owl:Class>
+
+<owl:Class rdf:about="#VIPCustomer">
+  <rdfs:subClassOf rdf:resource="#PreferredCustomer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#PreferredCustomerDefinition"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:someValuesFrom rdf:resource="#ShippedOrder"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:someValuesFrom rdf:resource="#HighValueOrderDefinition"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#PreferredCustomerDefinition"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RiskCustomerDefinition">
+  <rdfs:subClassOf rdf:resource="#RiskCustomer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Customer"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRiskFlag"/>
+          <owl:someValuesFrom rdf:resource="#RiskFlag"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:someValuesFrom rdf:resource="#ReturnedOrder"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#CustomerWithOrders"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BusinessOrderDefinition">
+  <rdfs:subClassOf rdf:resource="#BusinessOrder"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Order"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCustomer"/>
+          <owl:someValuesFrom rdf:resource="#BusinessCustomer"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasLine"/>
+          <owl:someValuesFrom rdf:resource="#OrderLine"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#OrderWithCustomer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BusinessCustomerDefinition">
+  <rdfs:subClassOf rdf:resource="#BusinessCustomer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BusinessCustomer"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:someValuesFrom rdf:resource="#BusinessOrderDefinition"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#CustomerWithOrders"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ValidOrderDefinition">
+  <rdfs:subClassOf rdf:resource="#ValidOrder"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Order"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCustomer"/>
+          <owl:someValuesFrom rdf:resource="#Customer"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasLine"/>
+          <owl:someValuesFrom rdf:resource="#OrderLine"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPayment"/>
+          <owl:someValuesFrom rdf:resource="#Payment"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#OrderWithCustomer"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PaidOrderDefinition">
+  <rdfs:subClassOf rdf:resource="#PaidOrder"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Order"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasStatus"/>
+          <owl:someValuesFrom rdf:resource="#Paid"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#ShippedOrderDefinition">
+  <rdfs:subClassOf rdf:resource="#ShippedOrder"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#PaidOrderDefinition"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasStatus"/>
+          <owl:someValuesFrom rdf:resource="#Shipped"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#PaidOrderDefinition"/>
+</owl:Class>
+
+<owl:Class rdf:about="#OrderWithCustomer">
+  <rdfs:subClassOf rdf:resource="#Order"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Order"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCustomer"/>
+          <owl:someValuesFrom rdf:resource="#Customer"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#PreferredButRiskyCustomer">
+  <rdfs:subClassOf rdf:resource="#Customer"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#PreferredCustomerDefinition"/>
+        <rdf:Description rdf:about="#RiskCustomerDefinition"/>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#PreferredCustomerDefinition"/>
+  <rdfs:subClassOf rdf:resource="#RiskCustomerDefinition"/>
+</owl:Class>
+
+
+</rdf:RDF>

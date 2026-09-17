@@ -58,5 +58,14 @@
   </owl:equivalentClass>
 </owl:Class>
 
+<owl:NamedIndividual rdf:about="#synthetic_customer">
+  <rdf:type rdf:resource="#Customer"/>
+  <placesOrder rdf:resource="#synthetic_order"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#synthetic_order">
+  <rdf:type rdf:resource="#Order"/>
+</owl:NamedIndividual>
+
 
 </rdf:RDF>
