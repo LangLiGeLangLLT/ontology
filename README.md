@@ -31,4 +31,5 @@ python -m edu.edu_owl
 python -m ecom.main
 python -m ecom.build
 python -m ecom.query
+python -m ecom.test
 ```

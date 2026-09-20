@@ -19,3 +19,5 @@ prompt = f"""
 请按以下 todo 执行：
 {ctx['plan_todo']}
 """
+
+print(prompt)
