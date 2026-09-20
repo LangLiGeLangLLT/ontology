@@ -5,3 +5,4 @@ python-dotenv==1.2.3
 langchain==1.4.2
 langgraph==1.2.11
 numexpr==2.14.2
+deepagents==0.6.8
