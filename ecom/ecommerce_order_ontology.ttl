@@ -1,0 +1,389 @@
+@prefix ecom: <http://example.org/ecommerce#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ecom:OrderRelationshipOntology a owl:Ontology ;
+    rdfs:label "电商订单关系本体"@zh ;
+    rdfs:comment "描述用户、平台、产品和订单之间的关系层，不包含具体订单金额、时间、数量等动态业务数据。"@zh ;
+    owl:sameAs ecom:OrderRelationshipOntology .
+
+rdf:HTML a rdfs:Datatype ;
+    owl:sameAs rdf:HTML .
+
+rdf:PlainLiteral a rdfs:Datatype ;
+    owl:sameAs rdf:PlainLiteral .
+
+rdf:XMLLiteral a rdfs:Datatype ;
+    owl:sameAs rdf:XMLLiteral .
+
+rdf:langString a rdfs:Datatype ;
+    owl:sameAs rdf:langString .
+
+rdf:type owl:sameAs rdf:type .
+
+rdfs:Literal a rdfs:Datatype ;
+    owl:sameAs rdfs:Literal .
+
+rdfs:comment a owl:AnnotationProperty ;
+    owl:sameAs rdfs:comment .
+
+rdfs:domain owl:sameAs rdfs:domain .
+
+rdfs:isDefinedBy a owl:AnnotationProperty ;
+    owl:sameAs rdfs:isDefinedBy .
+
+rdfs:label a owl:AnnotationProperty ;
+    owl:sameAs rdfs:label .
+
+rdfs:range owl:sameAs rdfs:range .
+
+rdfs:seeAlso a owl:AnnotationProperty ;
+    owl:sameAs rdfs:seeAlso .
+
+rdfs:subClassOf owl:sameAs rdfs:subClassOf .
+
+rdfs:subPropertyOf owl:sameAs rdfs:subPropertyOf .
+
+xsd:NCName a rdfs:Datatype ;
+    owl:sameAs xsd:NCName .
+
+xsd:NMTOKEN a rdfs:Datatype ;
+    owl:sameAs xsd:NMTOKEN .
+
+xsd:Name a rdfs:Datatype ;
+    owl:sameAs xsd:Name .
+
+xsd:anyURI a rdfs:Datatype ;
+    owl:sameAs xsd:anyURI .
+
+xsd:base64Binary a rdfs:Datatype ;
+    owl:sameAs xsd:base64Binary .
+
+xsd:boolean a rdfs:Datatype ;
+    owl:sameAs xsd:boolean .
+
+xsd:byte a rdfs:Datatype ;
+    owl:sameAs xsd:byte .
+
+xsd:date a rdfs:Datatype ;
+    owl:sameAs xsd:date .
+
+xsd:dateTime a rdfs:Datatype ;
+    owl:sameAs xsd:dateTime .
+
+xsd:dateTimeStamp a rdfs:Datatype ;
+    owl:sameAs xsd:dateTimeStamp .
+
+xsd:decimal a rdfs:Datatype ;
+    owl:sameAs xsd:decimal .
+
+xsd:double a rdfs:Datatype ;
+    owl:sameAs xsd:double .
+
+xsd:float a rdfs:Datatype ;
+    owl:sameAs xsd:float .
+
+xsd:hexBinary a rdfs:Datatype ;
+    owl:sameAs xsd:hexBinary .
+
+xsd:int a rdfs:Datatype ;
+    owl:sameAs xsd:int .
+
+xsd:integer a rdfs:Datatype ;
+    owl:sameAs xsd:integer .
+
+xsd:language a rdfs:Datatype ;
+    owl:sameAs xsd:language .
+
+xsd:long a rdfs:Datatype ;
+    owl:sameAs xsd:long .
+
+xsd:negativeInteger a rdfs:Datatype ;
+    owl:sameAs xsd:negativeInteger .
+
+xsd:nonNegativeInteger a rdfs:Datatype ;
+    owl:sameAs xsd:nonNegativeInteger .
+
+xsd:nonPositiveInteger a rdfs:Datatype ;
+    owl:sameAs xsd:nonPositiveInteger .
+
+xsd:normalizedString a rdfs:Datatype ;
+    owl:sameAs xsd:normalizedString .
+
+xsd:positiveInteger a rdfs:Datatype ;
+    owl:sameAs xsd:positiveInteger .
+
+xsd:short a rdfs:Datatype ;
+    owl:sameAs xsd:short .
+
+xsd:time a rdfs:Datatype ;
+    owl:sameAs xsd:time .
+
+xsd:token a rdfs:Datatype ;
+    owl:sameAs xsd:token .
+
+xsd:unsignedByte a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedByte .
+
+xsd:unsignedInt a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedInt .
+
+xsd:unsignedLong a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedLong .
+
+xsd:unsignedShort a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedShort .
+
+owl:backwardCompatibleWith a owl:AnnotationProperty ;
+    owl:sameAs owl:backwardCompatibleWith .
+
+owl:deprecated a owl:AnnotationProperty ;
+    owl:sameAs owl:deprecated .
+
+owl:equivalentClass owl:sameAs owl:equivalentClass .
+
+owl:equivalentProperty owl:sameAs owl:equivalentProperty .
+
+owl:incompatibleWith a owl:AnnotationProperty ;
+    owl:sameAs owl:incompatibleWith .
+
+owl:inverseOf owl:sameAs owl:inverseOf .
+
+owl:priorVersion a owl:AnnotationProperty ;
+    owl:sameAs owl:priorVersion .
+
+owl:sameAs owl:sameAs owl:sameAs .
+
+owl:versionInfo a owl:AnnotationProperty ;
+    owl:sameAs owl:versionInfo .
+
+owl:Ontology owl:sameAs owl:Ontology .
+
+"产品"@zh owl:sameAs "产品"@zh .
+
+"产品出现在订单记录中"@zh owl:sameAs "产品出现在订单记录中"@zh .
+
+"产品名称"@zh owl:sameAs "产品名称"@zh .
+
+"产品在某平台销售"@zh owl:sameAs "产品在某平台销售"@zh .
+
+"名称"@zh owl:sameAs "名称"@zh .
+
+"平台"@zh owl:sameAs "平台"@zh .
+
+"平台名称"@zh owl:sameAs "平台名称"@zh .
+
+"平台对应的订单记录"@zh owl:sameAs "平台对应的订单记录"@zh .
+
+"平台的用户关联"@zh owl:sameAs "平台的用户关联"@zh .
+
+"平台销售的产品"@zh owl:sameAs "平台销售的产品"@zh .
+
+"描述用户、平台、产品和订单之间的关系层，不包含具体订单金额、时间、数量等动态业务数据。"@zh owl:sameAs "描述用户、平台、产品和订单之间的关系层，不包含具体订单金额、时间、数量等动态业务数据。"@zh .
+
+"用户"@zh owl:sameAs "用户"@zh .
+
+"用户在平台的账号/平台关联"@zh owl:sameAs "用户在平台的账号/平台关联"@zh .
+
+"用户持有的订单记录"@zh owl:sameAs "用户持有的订单记录"@zh .
+
+"电商订单关系本体"@zh owl:sameAs "电商订单关系本体"@zh .
+
+"订单记录"@zh owl:sameAs "订单记录"@zh .
+
+"订单记录包含的产品"@zh owl:sameAs "订单记录包含的产品"@zh .
+
+"订单记录对应的平台"@zh owl:sameAs "订单记录对应的平台"@zh .
+
+"订单记录对应的购买者"@zh owl:sameAs "订单记录对应的购买者"@zh .
+
+ecom:hasOrder a owl:ObjectProperty ;
+    rdfs:label "用户持有的订单记录"@zh ;
+    rdfs:domain ecom:User,
+        owl:Thing ;
+    rdfs:range ecom:OrderRecord,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:hasOrder ;
+    owl:equivalentProperty ecom:hasOrder ;
+    owl:inverseOf ecom:buyerOf ;
+    owl:sameAs ecom:hasOrder .
+
+ecom:hasPlatform a owl:ObjectProperty ;
+    rdfs:label "用户在平台的账号/平台关联"@zh ;
+    rdfs:domain ecom:User,
+        owl:Thing ;
+    rdfs:range ecom:Platform,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:hasPlatform ;
+    owl:equivalentProperty ecom:hasPlatform ;
+    owl:inverseOf ecom:platformOf ;
+    owl:sameAs ecom:hasPlatform .
+
+ecom:includesProduct a owl:ObjectProperty ;
+    rdfs:label "订单记录包含的产品"@zh ;
+    rdfs:domain ecom:OrderRecord,
+        owl:Thing ;
+    rdfs:range ecom:Product,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:includesProduct ;
+    owl:equivalentProperty ecom:includesProduct ;
+    owl:inverseOf ecom:productInOrder ;
+    owl:sameAs ecom:includesProduct .
+
+ecom:name a owl:DatatypeProperty ;
+    rdfs:label "名称"@zh ;
+    rdfs:domain ecom:User,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf ecom:name ;
+    owl:equivalentProperty ecom:name ;
+    owl:sameAs ecom:name .
+
+ecom:orderPlatform a owl:ObjectProperty ;
+    rdfs:label "订单记录对应的平台"@zh ;
+    rdfs:domain ecom:OrderRecord,
+        owl:Thing ;
+    rdfs:range ecom:Platform,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:orderPlatform ;
+    owl:equivalentProperty ecom:orderPlatform ;
+    owl:inverseOf ecom:platformOfOrder ;
+    owl:sameAs ecom:orderPlatform .
+
+ecom:platformName a owl:DatatypeProperty ;
+    rdfs:label "平台名称"@zh ;
+    rdfs:domain ecom:Platform,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf ecom:platformName ;
+    owl:equivalentProperty ecom:platformName ;
+    owl:sameAs ecom:platformName .
+
+ecom:productName a owl:DatatypeProperty ;
+    rdfs:label "产品名称"@zh ;
+    rdfs:domain ecom:Product,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf ecom:productName ;
+    owl:equivalentProperty ecom:productName ;
+    owl:sameAs ecom:productName .
+
+ecom:soldOnPlatform a owl:ObjectProperty ;
+    rdfs:label "产品在某平台销售"@zh ;
+    rdfs:domain ecom:Product,
+        owl:Thing ;
+    rdfs:range ecom:Platform,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:soldOnPlatform ;
+    owl:equivalentProperty ecom:soldOnPlatform ;
+    owl:inverseOf ecom:platformSellsProduct ;
+    owl:sameAs ecom:soldOnPlatform .
+
+owl:Nothing a owl:Class ;
+    rdfs:subClassOf ecom:OrderRecord,
+        ecom:Platform,
+        ecom:Product,
+        ecom:User,
+        owl:Nothing,
+        owl:Thing ;
+    owl:equivalentClass owl:Nothing ;
+    owl:sameAs owl:Nothing .
+
+ecom:buyerOf a owl:ObjectProperty ;
+    rdfs:label "订单记录对应的购买者"@zh ;
+    rdfs:domain ecom:OrderRecord,
+        owl:Thing ;
+    rdfs:range ecom:User,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:buyerOf ;
+    owl:equivalentProperty ecom:buyerOf ;
+    owl:sameAs ecom:buyerOf .
+
+ecom:platformOf a owl:ObjectProperty ;
+    rdfs:label "平台的用户关联"@zh ;
+    rdfs:domain ecom:Platform,
+        owl:Thing ;
+    rdfs:range ecom:User,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:platformOf ;
+    owl:equivalentProperty ecom:platformOf ;
+    owl:sameAs ecom:platformOf .
+
+ecom:platformOfOrder a owl:ObjectProperty ;
+    rdfs:label "平台对应的订单记录"@zh ;
+    rdfs:domain ecom:Platform,
+        owl:Thing ;
+    rdfs:range ecom:OrderRecord,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:platformOfOrder ;
+    owl:equivalentProperty ecom:platformOfOrder ;
+    owl:sameAs ecom:platformOfOrder .
+
+ecom:platformSellsProduct a owl:ObjectProperty ;
+    rdfs:label "平台销售的产品"@zh ;
+    rdfs:domain ecom:Platform,
+        owl:Thing ;
+    rdfs:range ecom:Product,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:platformSellsProduct ;
+    owl:equivalentProperty ecom:platformSellsProduct ;
+    owl:sameAs ecom:platformSellsProduct .
+
+ecom:productInOrder a owl:ObjectProperty ;
+    rdfs:label "产品出现在订单记录中"@zh ;
+    rdfs:domain ecom:Product,
+        owl:Thing ;
+    rdfs:range ecom:OrderRecord,
+        owl:Thing ;
+    rdfs:subPropertyOf ecom:productInOrder ;
+    owl:equivalentProperty ecom:productInOrder ;
+    owl:sameAs ecom:productInOrder .
+
+xsd:string a rdfs:Datatype ;
+    owl:sameAs xsd:string .
+
+owl:DatatypeProperty owl:sameAs owl:DatatypeProperty .
+
+owl:Class owl:sameAs owl:Class .
+
+ecom:Product a owl:Class ;
+    rdfs:label "产品"@zh ;
+    rdfs:subClassOf ecom:Product,
+        owl:Thing ;
+    owl:equivalentClass ecom:Product ;
+    owl:sameAs ecom:Product .
+
+ecom:User a owl:Class ;
+    rdfs:label "用户"@zh ;
+    rdfs:subClassOf ecom:User,
+        owl:Thing ;
+    owl:equivalentClass ecom:User ;
+    owl:sameAs ecom:User .
+
+ecom:OrderRecord a owl:Class ;
+    rdfs:label "订单记录"@zh ;
+    rdfs:subClassOf ecom:OrderRecord,
+        owl:Thing ;
+    owl:equivalentClass ecom:OrderRecord ;
+    owl:sameAs ecom:OrderRecord .
+
+owl:AnnotationProperty owl:sameAs owl:AnnotationProperty .
+
+ecom:Platform a owl:Class ;
+    rdfs:label "平台"@zh ;
+    rdfs:subClassOf ecom:Platform,
+        owl:Thing ;
+    owl:equivalentClass ecom:Platform ;
+    owl:sameAs ecom:Platform .
+
+owl:ObjectProperty owl:sameAs owl:ObjectProperty .
+
+owl:Thing a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass owl:Thing ;
+    owl:sameAs owl:Thing .
+
+rdfs:Datatype owl:sameAs rdfs:Datatype .
+
